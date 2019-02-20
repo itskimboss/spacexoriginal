@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>SpaceX</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link type="text/css" href="styles/main.css" rel="stylesheet" />
+		<link type="text/css" href="styles/layout.css" rel="stylesheet" />
+
+
+		<script>
+			window.onload = function () {
+
+			var chart = new CanvasJS.Chart("chartContainer1", {
+				animationEnabled: true,
+				backgroundColor: "#ADD8E6",
+				title:{
+					text: "Brandstof",
+					horizontalAlign: "center",
+					fontFamily: "Comic Sans",
+					 	fontWeight: "bold"
+				},
+				data: [{
+					type: "doughnut",
+					startAngle: 50,
+					indexLabelFontSize: 14,
+					indexLabelFontFamily: "Comic Sans",
+					indexLabelFontWeight: "bold",
+					indexLabel: "{label}  #percent%",
+					toolTipContent: "<b>{label}:</b> {y} (#percent%)",
+					dataPoints: [
+						{ y: 75, label: "Available" },
+						{ y: 25, label: "Not Available"}
+					]
+				}]
+			});
+			chart.render();
+
+			var chart = new CanvasJS.Chart("chartContainer2", {
+			animationEnabled: true, 
+			backgroundColor: "#ADD8E6", 
+			title:{
+				text: "Acceleratie",
+				horizontalAlign: "center",
+				fontFamily: "Comic Sans",
+				fontWeight: "bold"
+			},
+			axisY: {
+				title: "Change in Velocity",
+				valueFormatString: "#0,,.",
+				suffix: "km/u",
+				stripLines: [{
+					value: 3366500,
+					label: "Average"
+				}]
+			},
+			data: [{
+				yValueFormatString: "#,### Units",
+				xValueFormatString: "YYYY",
+				type: "spline",
+				dataPoints: [
+						{  y: 0, label: "June 1" },
+						{  y: 20000, label: "June 2" },
+						{  y: 40000, label: "June 3" },
+						{  y: 60000, label: "June 4" },
+						{  y: 50000, label: "June 5" }
+					]
+			}]
+		});
+		chart.render();
+
+				var chart = new CanvasJS.Chart("chartContainer3", {
+					animationEnabled: true,
+					backgroundColor: "#ADD8E6",
+					zoomEnabled: true,
+					title:{
+						text: "G-Force",
+						fontFamily: "Comic Sans",
+						fontWeight: "bold"
+					},
+					axisY :{
+						includeZero:false
+					},
+					data: data  
+				});
+				chart.render();
+
+				}
+
+				var limit = 1000;
+
+				var y = 0;
+				var data = [];
+				var dataSeries = { type: "line" };
+				var dataPoints = [];
+				for (var i = 0; i < limit; i += 1) {
+					y += (Math.random() * 10 - 5);
+					dataPoints.push({
+						x: i - limit / 2,
+						y: y                
+					});
+				}
+				dataSeries.dataPoints = dataPoints;
+				data.push(dataSeries);       
+
+
+
+			</script>
+	</head>
+	<body>
+
+		<header>
+			<img src="images/logo.png" alt="logo.png" />
+		</header>
+
+ 		 <main class="grid-item main1">
+	    	
+ 		 	<div id="chartContainer1" class="card" style="height: 200px; width: 100%;"></div>
+			<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	    	
+			
+	    </main>
+	    
+	     <main class="grid-item main2">
+	    	<div id="chartContainer2" style="height: 200px; width: 100%;"></div>
+		<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	      </main>
+
+	    <main class="grid-item main3">
+	    <div id="chartContainer3" style="height: 200px; width: 100%;">
+	    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+	    </div>
+	    </main>
+
+
+
+	</body>
+</html>
